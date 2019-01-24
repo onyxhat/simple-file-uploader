@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web1:
+    build: .
+    volumes:
+      - /media/Docker/web1:/app/uploads
+    ports:
+      - 8001:8000
+    environment:
+      PORT: 8000
+  web2:
+    build: .
+    volumes:
+      - /media/Docker/web2:/app/uploads
+    ports:
+      - 8002:8000
+    environment:
+      PORT: 8000
+  web3:
+    build: .
+    volumes:
+      - /media/Docker/web3:/app/uploads
+    ports:
+      - 8003:8000
+    environment:
+      PORT: 8000
