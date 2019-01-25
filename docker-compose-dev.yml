@@ -1,26 +1,32 @@
 version: '3'
 services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./conf/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    ports:
+      - 8888:80
   web1:
     build: .
+    depends_on:
+      - nginx
     volumes:
       - /media/Docker/web1:/app/uploads
-    ports:
-      - 8001:8000
     environment:
       PORT: 8000
   web2:
     build: .
+    depends_on:
+      - nginx
     volumes:
       - /media/Docker/web2:/app/uploads
-    ports:
-      - 8002:8000
     environment:
       PORT: 8000
   web3:
     build: .
+    depends_on:
+      - nginx
     volumes:
       - /media/Docker/web3:/app/uploads
-    ports:
-      - 8003:8000
     environment:
       PORT: 8000
